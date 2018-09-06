@@ -189,6 +189,11 @@ final public class PopupDialog: UIViewController {
 
     // MARK: - View life cycle
 
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        statusBarShouldBeHidden = hideStatusBar
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
     /// Replaces controller view with popup view
     public override func loadView() {
         view = PopupDialogContainerView(frame: UIScreen.main.bounds, preferredWidth: preferredWidth)
@@ -206,10 +211,10 @@ final public class PopupDialog: UIViewController {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        statusBarShouldBeHidden = hideStatusBar
-        UIView.animate(withDuration: 0.15) {
-            self.setNeedsStatusBarAppearanceUpdate()
-        }
+//        statusBarShouldBeHidden = hideStatusBar
+//        UIView.animate(withDuration: 0.15) {
+//            self.setNeedsStatusBarAppearanceUpdate()
+//        }
     }
 
     public override func viewWillDisappear(_ animated: Bool) {
